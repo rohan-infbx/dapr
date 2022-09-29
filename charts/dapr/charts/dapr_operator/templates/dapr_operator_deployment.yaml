@@ -88,6 +88,9 @@ spec:
         command:
         - "/operator"
         args:
+{{- if eq .Values.disableLeaderElection true }}
+        - "--disable-leader-election=true"
+{{- end }}
         - "--log-level"
         - {{ .Values.logLevel }}
 {{- if eq .Values.global.logAsJson true }}
